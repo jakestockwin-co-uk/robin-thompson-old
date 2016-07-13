@@ -1,21 +1,30 @@
 {{!< default}}
 <div class="container">
-	<div class="jumbotron"><img src="/images/logo.svg" width="160">
-		<h1>Welcome</h1>
-		<p>This is your new <a href='http://keystonejs.com' target='_blank'>KeystoneJS</a> website.</p>
-		<p>
-			It includes the latest versions of
-			<a href='http://getbootstrap.com/' target='_blank'>Bootstrap</a>
-			and <a href='http://www.jquery.com/' target='_blank'>jQuery</a>.
-		</p>
-		<p>Visit the <a href='http://keystonejs.com/guide' target='_blank'>Getting Started</a> guide to learn how to customise it.</p>
-		<hr>
-		<p>We have created a default Admin user for you with the email <strong>user@keystonejs.com</strong> and the password <strong>admin</strong>.</p>
-		<p><a href="/keystone/signin" style="margin-right: 10px" class="btn btn-lg btn-primary">Sign in</a> to use the Admin UI.</p>
-		<hr>
-		<p>
-			Remember to <a href='https://github.com/keystonejs/keystone' target='_blank'>Star KeystoneJS on GitHub</a> and
-			<a href='https://twitter.com/keystonejs' target='_blank'>follow @keystonejs</a> on twitter for updates.
-		</p>
-	</div>
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col col-sm-7">
+        <img src="images/robin.jpg" class="img-responsive">
+      </div>
+      <div class="col col-sm-5">
+
+        <br>
+
+        <img src="images/research.png" class="img-responsive">
+        <a href="research" onclick="changeDiv(event, '/research', 'Research', 'Research Interests', 'Research')"><h4>Research</h4></a>
+        <hr>
+        <img src="images/teaching.png" class="img-responsive">
+        <a href="teaching" onclick="changeDiv(event, '/teaching', 'Teaching', 'Teaching', 'Teaching')"><h4>Teaching</h4></a>
+      </div>
+    </div>
+    <hr/>
+    I am a postdoctoral research assistant in mathematical epidemiology at the University of Oxford, and a stipendiary lecturer in applied mathematics at Lady Margaret Hall. This website
+    contains some information about my research and teaching.
+    <hr/>
+    My research involves using mathematical models to represent the epidemiological or evolutionary behaviour of infectious disease outbreaks. This includes using statistical methods to estimate
+    the parameters associated with disease spread and pathogen evolution, and using the stochastic and deterministic models that I develop to generate forward projections. The main aims are not only to generate forecasts of
+    specific outbreaks, but also to understand how diseases spread so that forecasts can be made and control interventions can be planned with more precision.
+    <hr/>
+    If there is anything that you cannot find on this website, or you would like any more information, feel free to email me! I am always interested in new collaborations, so if you would like
+    to work together then please also get in touch!
+  </div>
 </div>
