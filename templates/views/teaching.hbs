@@ -9,7 +9,7 @@
         <li>Prelims (first year)</li>
         <ul>
         {{#each courses.prelims }}
-          <li><a href="http://www0.maths.ox.ac.uk/courses/course/{{ courseNumber }}" target="_blank">{{ title }}</a></li>
+          <li>{{> course }}</li>
         {{/each }}
         </ul>
       {{/if }}
@@ -17,7 +17,7 @@
         <li>Part A (second year)</li>
         <ul>
         {{#each courses.partA }}
-          <li><a href="http://www0.maths.ox.ac.uk/courses/course/{{ courseNumber }}" target="_blank">{{ title }}</a></li>
+          <li>{{> course }}</li>
         {{/each }}
         </ul>
       {{/if }}
@@ -25,7 +25,7 @@
         <li>Part B (third year)</li>
         <ul>
         {{#each courses.partB }}
-          <li><a href="http://www0.maths.ox.ac.uk/courses/course/{{ courseNumber }}" target="_blank">{{ title }}</a></li>
+          <li>{{> course }}</li>
         {{/each }}
         </ul>
       {{/if }}
@@ -33,7 +33,7 @@
         <li>Part C (fourth year)</li>
         <ul>
         {{#each courses.partC }}
-          <li><a href="http://www0.maths.ox.ac.uk/courses/course/{{ courseNumber }}" target="_blank">{{ title  }}</a></li>
+          <li>{{> course }}</li>
         {{/each }}
         </ul>
       {{/if }}

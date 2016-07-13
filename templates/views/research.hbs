@@ -10,7 +10,7 @@
     <br/>
     <ul id="research-list">
     {{#each research }}
-      <li><a href="{{ url }}" onclick="changeDiv(event,'{{ url }}','Research','{{ title }}',null)">{{ title }}</a></li>
+      <li>{{> research }}</li>
     {{/each }}
     </ul>
     <br/>
