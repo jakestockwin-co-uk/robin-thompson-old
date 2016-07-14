@@ -55,3 +55,11 @@ exports.requireUser = function (req, res, next) {
 		next();
 	}
 };
+
+exports.redirectHtml = function (req, res, next) {
+	if (req.url.endsWith('.html')) {
+		res.redirect(req.url.slice(0, -5));
+	} else {
+		next();
+	}
+};
