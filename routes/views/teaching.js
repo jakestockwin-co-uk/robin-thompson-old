@@ -28,8 +28,7 @@ exports = module.exports = function (req, res) {
 			locals.courses.partA = results.filter((course) => course.year == 2);
 			locals.courses.partB = results.filter((course) => course.year == 3);
 			locals.courses.partC = results.filter((course) => course.year == 4);
-			console.log(locals.courses);
-			console.log(results);
+
 			next(err);
 		});
 
