@@ -5834,3 +5834,10 @@ button.close {
   display: block;
   max-width: 100%;
   height: auto; }
+
+.twitter {
+  max-width: 250px;
+  margin: auto; }
+
+.twitter > iframe {
+  max-height: 400px; }
