@@ -32,6 +32,7 @@ keystone.init({
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+	'model prefix': 'robin_thompson',
 });
 
 // Load your project's Models
