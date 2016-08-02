@@ -1,13 +1,10 @@
 {{!< default}}
-<div id="content">
-    <div>
+<p>
+	<a href="/research.html" onClick="changeDiv(event, '/research.html', 'Research', 'Research Interests', 'research')"><< Back to all research projects</a>
+	<br>
+	
+	{{{ data.project.bodyText.html }}}
+	
+	<a href="/research.html" onClick="changeDiv(event, '/research.html', 'Research', 'Research Interests', 'research')"><< Back to all research projects</a>
 
-        <a href="/research.html" onClick="changeDiv(event, '/research.html', 'Research', 'Research Interests', 'Research')"><< Back to all research projects</a>
-        <br>
-
-		{{{ data.project.bodyText.html }}}
-
-        <a href="/research.html" onClick="changeDiv(event, '/research.html', 'Research', 'Research Interests', 'Research')"><< Back to all research projects</a>
-
-    </div>
-</div>
+</p>

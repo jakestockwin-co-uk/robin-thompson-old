@@ -18,40 +18,29 @@
 			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
 			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		
+		<script src="/js/changeDiv.js"></script>
 
 	</head>
 	<body>
-		<div id="header">
-			<div class="container">
-				<div role="navigation" class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-							</button>
-							<a href="/" class="navbar-brand">Robin Thompson</a>
-						</div>
-						<div class="collapse navbar-collapse">
-							<ul class="nav navbar-nav navbar-left">
-									{{# each navLinks}}
-									<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}}>
-										<a href="{{ href }}">{{ label }}</a>
-									</li>
-								{{/each}}
-							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								{{#if user}}
-								<li><a href="/keystone/signout">Sign Out</a></li>
-								{{else}}
-								<li><a href="/keystone/signin">Sign In</a></li>
-								{{/if}}
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <nav class="navbar navbar-static">
+            <div class="container">
+                <div class="nav-collapse collase">
+                    <ul class="nav navbar-nav">
+						{{# each navLinks}}
+                            <li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}} id="{{ key }}">
+                                <a href="{{ href }}" onclick="changeDiv(event,'{{href}}','{{label}}','{{title}}','{{key}}')">{{ label }}</a>
+                            </li>
+						{{/each}}
+                    </ul>
+                    <ul class="nav navbar-right navbar-nav" id="nav-right">
+                        <li>
+                            <a href="">robin-thompson.co.uk</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav><!-- /.navbar -->
 		<div id="body">
 			<!--
 				Flash messages allow you to display once-off status messages to users, e.g. form
@@ -97,8 +86,18 @@
 						  </ul>
 					  </div>
 				  </div>
-
-    			{{{body}}}
+                  <div id="animateMe" class="col col-sm-9">
+                      <div class="panel">
+                          <h1 id="heading" class="title">{{title}}</h1>
+                          <hr>
+                          <div id="content">
+                              <div>
+								  {{{body}}}
+								  <br>
+						  </div>
+					  </div>
+				  </div>
+			  </div>
     	  </div>
   	  </div>
 		</div>

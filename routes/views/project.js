@@ -8,6 +8,7 @@ exports = module.exports = function (req, res) {
 	// locals.section is used to set the currently selected
 	// item in the header navigation.
 	locals.section = 'research';
+	locals.title = 'Research'; // Fallback, which should be overwritten
 	locals.filters = {
 		project: req.params.project,
 	};
@@ -21,6 +22,7 @@ exports = module.exports = function (req, res) {
 			slug: locals.filters.project,
 		}).exec(function (err, result) {
 			locals.data.project = result;
+			locals.title = result.title;
 			next(err);
 		});
 

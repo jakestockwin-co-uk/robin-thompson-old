@@ -1,51 +1,48 @@
 {{!< default}}
-<div class="col col-sm-9">
-	<div class="jumbotron">
-    <h2 id="heading" class="title">Teaching</h2>
-    I hold a stipendiary lectureship in applied mathematics at Lady Margaret Hall, University of Oxford.  The courses that I am currently tutoring there are:
-    <ul id="courses">
-
-      {{#if courses.prelims.length }}
-        <li>Prelims (first year)</li>
-        <ul>
-        {{#each courses.prelims }}
-          <li>{{> course }}</li>
-        {{/each }}
-        </ul>
-      {{/if }}
-      {{#if courses.partA.length }}
-        <li>Part A (second year)</li>
-        <ul>
-        {{#each courses.partA }}
-          <li>{{> course }}</li>
-        {{/each }}
-        </ul>
-      {{/if }}
-      {{#if courses.partB.length }}
-        <li>Part B (third year)</li>
-        <ul>
-        {{#each courses.partB }}
-          <li>{{> course }}</li>
-        {{/each }}
-        </ul>
-      {{/if }}
-      {{#if courses.partC.length }}
-        <li>Part C (fourth year)</li>
-        <ul>
-        {{#each courses.partC }}
-          <li>{{> course }}</li>
-        {{/each }}
-        </ul>
-      {{/if }}
-    </ul>
-
-    I have also tutored a number of other applied mathematics courses on the Oxford undergraduate syllabus, and co-supervised undergraduate dissertations and summer projects.
-    <br/>
-    Every year, I deliver mathematical epidemiology lectures on the Wellcome Trust Mathematical Models for Infectious Disease Dynamics course in Cambridge.
-    <br/>
-    In the past I have supervised part IA Mathematical Biology in Cambridge, as well as lecturing and running
-    the associated practical component for part of the course (Matrix Modelling and Applications, Easter term).
-    I have also held a non-stipendiary applied mathematics lectureship at Worcester College,
-    Oxford (also where I studied when I was an undergraduate!)
-	</div>
-</div>
+<p>
+	I hold a stipendiary lectureship in applied mathematics at Lady Margaret Hall, University of Oxford.  The courses that I am currently tutoring there are:
+	<ul id="courses">
+	
+	  {{#if courses.prelims.length }}
+		<li>Prelims (first year)</li>
+		<ul>
+		{{#each courses.prelims }}
+		  <li>{{> course }}</li>
+		{{/each }}
+		</ul>
+	  {{/if }}
+	  {{#if courses.partA.length }}
+		<li>Part A (second year)</li>
+		<ul>
+		{{#each courses.partA }}
+		  <li>{{> course }}</li>
+		{{/each }}
+		</ul>
+	  {{/if }}
+	  {{#if courses.partB.length }}
+		<li>Part B (third year)</li>
+		<ul>
+		{{#each courses.partB }}
+		  <li>{{> course }}</li>
+		{{/each }}
+		</ul>
+	  {{/if }}
+	  {{#if courses.partC.length }}
+		<li>Part C (fourth year)</li>
+		<ul>
+		{{#each courses.partC }}
+		  <li>{{> course }}</li>
+		{{/each }}
+		</ul>
+	  {{/if }}
+	</ul>
+	
+	I have also tutored a number of other applied mathematics courses on the Oxford undergraduate syllabus, and co-supervised undergraduate dissertations and summer projects.
+	<br/>
+	Every year, I deliver mathematical epidemiology lectures on the Wellcome Trust Mathematical Models for Infectious Disease Dynamics course in Cambridge.
+	<br/>
+	In the past I have supervised part IA Mathematical Biology in Cambridge, as well as lecturing and running
+	the associated practical component for part of the course (Matrix Modelling and Applications, Easter term).
+	I have also held a non-stipendiary applied mathematics lectureship at Worcester College,
+	Oxford (also where I studied when I was an undergraduate!)
+</p>
