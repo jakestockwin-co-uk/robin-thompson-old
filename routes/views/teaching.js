@@ -10,12 +10,12 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'teaching';
 	locals.courses = {
-	  prelims: [],
-	  partA: [],
-	  partB: [],
-	  partC: []
-	}
-	
+		prelims: [],
+		partA: [],
+		partB: [],
+		partC: [],
+	};
+
 	view.on('init', function (next) {
 
 		Course.model.find().exec(function (err, results) {
@@ -24,17 +24,15 @@ exports = module.exports = function (req, res) {
 				return next(err);
 			}
 
-			locals.courses.prelims = results.filter((course) => course.year == 1);
-			locals.courses.partA = results.filter((course) => course.year == 2);
-			locals.courses.partB = results.filter((course) => course.year == 3);
-			locals.courses.partC = results.filter((course) => course.year == 4);
+			locals.courses.prelims = results.filter((course) => course.year === 1);
+			locals.courses.partA = results.filter((course) => course.year === 2);
+			locals.courses.partB = results.filter((course) => course.year === 3);
+			locals.courses.partC = results.filter((course) => course.year === 4);
 
 			next(err);
 		});
 
 	});
-
-
 
 	// Render the view
 	view.render('teaching');

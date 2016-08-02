@@ -20,7 +20,7 @@ exports = module.exports = function (req, res) {
 			}
 
 			locals.publications = results;
-			
+
 			next(err);
 		});
 

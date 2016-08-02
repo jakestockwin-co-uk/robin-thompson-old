@@ -13,7 +13,7 @@ Publication.add({
 	year: { type: Types.Date, format: 'YYYY', initial: true, required: true },
 	ref: { type: Types.Text, initial: true, required: true, index: true },
 	link: { type: Types.Url, initial: true },
-	linkName: { type: Types.Text, initial: true, dependsOn: { link: true } } //Has effect of depending on non-empty link
+	linkName: { type: Types.Text, initial: true, dependsOn: { link: true } }, // Has effect of depending on non-empty link
 });
 
 /**

@@ -1,6 +1,6 @@
 exports.create = {
 	Publication: [
-		{ 
+		{
 			title: 'Detecting presymptomatic infection is necessary to forecast major epidemics in the earliest stages of infectious disease outbreaks',
 			authors: 'Thompson, R.N., Gilligan, C.A. and Cunniffe, N.J.',
 			year: '2016',

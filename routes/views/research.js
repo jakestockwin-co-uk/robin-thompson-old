@@ -10,7 +10,7 @@ exports = module.exports = function (req, res) {
 	// item in the header navigation.
 	locals.section = 'research';
 	locals.research = [];
-	
+
 	view.on('init', function (next) {
 
 		Research.model.find().exec(function (err, results) {
@@ -20,7 +20,7 @@ exports = module.exports = function (req, res) {
 			}
 
 			locals.research = results;
-			
+
 			next(err);
 		});
 
