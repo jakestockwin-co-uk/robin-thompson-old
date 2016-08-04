@@ -1,5 +1,5 @@
 var keystone = require('keystone');
-var Research = keystone.list('Research');
+var Research = keystone.list('ResearchProject');
 
 exports = module.exports = function (req, res) {
 

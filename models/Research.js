@@ -5,7 +5,7 @@ var Types = keystone.Field.Types;
  * Research Model
  * ==========
  */
-var Research = new keystone.List('Research', {
+var Research = new keystone.List('ResearchProject', {
 	autokey: { path: 'slug', from: 'title', unique: true },
 });
 

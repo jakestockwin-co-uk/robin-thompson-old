@@ -18,7 +18,7 @@ exports = module.exports = function (req, res) {
 
 	view.on('init', function (next) {
 
-		keystone.list('Research').model.findOne({
+		keystone.list('ResearchProject').model.findOne({
 			slug: locals.filters.project,
 		}).exec(function (err, result) {
 			locals.data.project = result;
