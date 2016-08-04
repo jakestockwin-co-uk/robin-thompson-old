@@ -58,6 +58,7 @@ keystone.Email.defaults.templateEngine = require('handlebars');
 
 // Configure the navigation bar in Keystone's Admin UI
 keystone.set('nav', {
+	content: ['courses', 'publications', 'research-projects'],
 	users: 'users',
 });
 
