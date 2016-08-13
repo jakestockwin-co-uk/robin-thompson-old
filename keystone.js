@@ -63,5 +63,8 @@ keystone.set('nav', {
 });
 
 // Start Keystone to connect to your database and initialise the web server
+if (keystone.get('env') === 'production') {
+	keystone.set('session store', 'connect-mongo');
+}
 
 keystone.start();
