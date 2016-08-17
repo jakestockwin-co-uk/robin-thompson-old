@@ -7,15 +7,15 @@
 		<title>Robin Thompson - {{title}}</title>
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 		<link href="/styles/site.css" rel="stylesheet">
-        <meta name="description" content="Robin Thompson Website">
-        <meta name="keywords" content="Robin,Thompson,Website,Research,Publications">
-        <meta name="author" content="Robin Thompson">
-        <meta name="theme-color" content="#002147">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <!--[if lt IE 9]>
+		<meta name="description" content="Robin Thompson Website">
+		<meta name="keywords" content="Robin,Thompson,Website,Research,Publications">
+		<meta name="author" content="Robin Thompson">
+		<meta name="theme-color" content="#002147">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
 		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+		<![endif]-->
 
 		{{!-- This file provides the default styling for the KeystoneJS Content Editor
 			- only renders when user is logged in and admin--}}
@@ -32,24 +32,24 @@
 		<script src="/js/googleAnalytics.js"></script>
 	</head>
 	<body>
-        <nav class="navbar navbar-static">
-            <div class="container">
-                <div class="nav-collapse collase">
-                    <ul class="nav navbar-nav">
-						{{# each navLinks}}
-                            <li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}} id="{{ key }}">
-                                <a href="{{ href }}" onclick="changeDiv(event,'{{href}}','{{label}}','{{title}}','{{key}}')">{{ label }}</a>
-                            </li>
-						{{/each}}
-                    </ul>
-                    <ul class="nav navbar-right navbar-nav" id="nav-right">
-                        <li>
-                            <a href="">robin-thompson.co.uk</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav><!-- /.navbar -->
+		<nav class="navbar navbar-static">
+			<div class="container">
+				<div class="nav-collapse collase">
+					<ul class="nav navbar-nav">
+					{{# each navLinks}}
+						<li {{#ifeq ../section key}}class="active"{{else}}{{/ifeq}} id="{{ key }}">
+							<a href="{{ href }}" onclick="changeDiv(event,'{{href}}','{{label}}','{{title}}','{{key}}')">{{ label }}</a>
+						</li>
+					{{/each}}
+					</ul>
+					<ul class="nav navbar-right navbar-nav" id="nav-right">
+						<li>
+							<a href="">robin-thompson.co.uk</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav><!-- /.navbar -->
 		<div id="body">
 			<!--
 				Flash messages allow you to display once-off status messages to users, e.g. form
@@ -81,34 +81,34 @@
 			{{/if}}
 			<!-- The content block should contain the body of your template's content-->
 			<div class="container">
-			  <div class="row">
-				  <div class="col col-sm-3">
-					  <div id="sidebar" class="">
-						  <ul class="nav nav-stacked">
-							  <li><h3 class="highlight">Twitter</h3></li>
-						  </ul>
-						  <div class="twitter">
-							  <a class="twitter-timeline" href="https://twitter.com/RobinNThompson" data-widget-id="680838504599924740">Tweets by @RobinNThompson</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-						  </div>
-						  <ul class="nav nav-stacked">
-							  <li><a href="/downloads/RobinThompsonCV.pdf" target="_blank"><h3 class="highlight" style="margin-top:0px;">CV</h3></a></li>
-						  </ul>
-					  </div>
-				  </div>
-                  <div id="animateMe" class="col col-sm-9">
-                      <div class="panel">
-                          <h1 id="heading" class="title">{{title}}</h1>
-                          <hr>
-                          <div id="content">
-                              <div>
-								  {{{body}}}
+				<div class="row">
+					<div class="col col-sm-3">
+						<div id="sidebar" class="">
+							<ul class="nav nav-stacked">
+								<li><h3 class="highlight">Twitter</h3></li>
+							</ul>
+							<div class="twitter">
+								<a class="twitter-timeline" href="https://twitter.com/RobinNThompson" data-widget-id="680838504599924740">Tweets by @RobinNThompson</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+							</div>
+							<ul class="nav nav-stacked">
+								<li><a href="/downloads/RobinThompsonCV.pdf" target="_blank"><h3 class="highlight" style="margin-top:0px;">CV</h3></a></li>
+							</ul>
+						</div>
+					</div>
+					<div id="animateMe" class="col col-sm-9">
+						<div class="panel">
+							<h1 id="heading" class="title">{{title}}</h1>
+							<hr>
+							<div id="content">
+								<div>
+									{{{body}}}
 								  <br>
-						  </div>
-					  </div>
-				  </div>
-			  </div>
-    	  </div>
-  	  </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="container">
 			<div id="footer">
