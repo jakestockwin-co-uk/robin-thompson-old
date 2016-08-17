@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '6'
+script:
+- npm run lint
+deploy:
+  provider: script
+  script: deployment/deploy.sh
+  on:
+    branch: master
+cache:
+  directories:
+  - node_modules
+notifications:
+  slack:
+    secure: tfafTSJ4HUfd3EY2nNdRyO+ULftvO1Trgn7qJ6D4cGA0IWGe7z6dPYfBkdiyLrbsLLncIXAKI0cOsEI0PP+hlDLQfwnGWQuRak5HoukWMh/afAH+2EQzZ0f9hUXxWI2AXDkqk10LncZTjFoKIrwlQ3GyAsw/LUJkCm008Xfj1bV0K47Ke+ZYS1av4UVMdLh8+bvKeINXjHl4f8GozchU+zRxjpWSqU7P+lu1V1ZVowfpmSfdo0q6xzFIaundvuptxmkGlbDX++lYDvpBUDaCNd+SVTYn0o0cUY9PgvHebrgcaEeYMyLTKFrB7vuV4Ct3lmBLyHcp2h/JKBrsYPXnhWhIbAxr5KVEIM7fDoiSLTMDSd9Sj91ME9yuwHdwqssbxKDSpcHupqfry0uNBODoNhi+G4GVSoy4DN1M8/pj7d6d65yXtR0kXLYAq+Oqk/W46Cl9XkueDuUcaGIvwtnC9K6HXthTx7A6I9RwkFPZk0iJA+5Qn22f6zUiiYGK0S8nBQCtlgeoKshiiFP74ePJFlLdTwJeRlDVtuJed1e5j+dqNwkTcsoHkp1bZQ5+j+qZib0sgZxvLDdoRfuNBvQvqw6xH6sPK+uGL8kTI6SG1z5MekLMIMfzHFOZMT+bTNMHn/wFLD7ivyeW/fVuDGEqoVmt3A668jeFSQOw4nbGZC8=
