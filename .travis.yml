@@ -1,12 +1,13 @@
 language: node_js
 
 node_js:
-- '6'
+  - '6'
 
 script:
-- npm run lint
+  - npm run lint
 
-before_deploy: wget https://raw.githubusercontent.com/jakestockwin-co-uk/deployment/master/travis-deploy.sh && chmod +x travis-deploy.sh
+before_deploy:
+  - wget https://raw.githubusercontent.com/jakestockwin-co-uk/deployment/master/travis-deploy.sh && chmod +x travis-deploy.sh && ls -l
 
 deploy:
   provider: script
@@ -17,7 +18,7 @@ deploy:
 
 cache:
   directories:
-  - node_modules
+    - node_modules
   
 notifications:
   slack:
