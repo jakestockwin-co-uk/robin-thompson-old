@@ -21,9 +21,18 @@ exports = module.exports = function (req, res) {
 		keystone.list('ResearchProject').model.findOne({
 			slug: locals.filters.project,
 		}).exec(function (err, result) {
-			locals.data.project = result;
-			locals.title = result.title;
-			next(err);
+			if (result === null) {
+				// Project with that slug not found
+				req.flash('error', {
+					title: 'Project not found',
+					detail: 'The requested project was not found. Go back and try again',
+				});
+				next(err);
+			} else {
+				locals.data.project = result;
+				locals.title = result.title;
+				next(err);
+			}
 		});
 
 	});
