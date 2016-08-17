@@ -6,9 +6,11 @@ node_js:
 script:
 - npm run lint
 
+before_deploy: wget https://raw.githubusercontent.com/jakestockwin-co-uk/deployment/master/travis-deploy.sh && chmod +x travis-deploy.sh
+
 deploy:
   provider: script
-  script: deployment/deploy.sh
+  script: travis-deploy.sh
   skip_cleanup: true
   on:
     branch: master
