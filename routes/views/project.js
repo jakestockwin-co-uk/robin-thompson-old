@@ -1,5 +1,12 @@
 var keystone = require('keystone');
 
+const errorProject = {
+	title: 'Error',
+	bodyText: {
+		html: '<p>The requested project was not found. Go back and try again</p>',
+	},
+};
+
 exports = module.exports = function (req, res) {
 
 	var view = new keystone.View(req, res);
@@ -23,16 +30,11 @@ exports = module.exports = function (req, res) {
 		}).exec(function (err, result) {
 			if (result === null) {
 				// Project with that slug not found
-				req.flash('error', {
-					title: 'Project not found',
-					detail: 'The requested project was not found. Go back and try again',
-				});
-				next(err);
-			} else {
-				locals.data.project = result;
-				locals.title = result.title;
-				next(err);
+				result = errorProject;
 			}
+			locals.data.project = result;
+			locals.title = result.title;
+			next(err);
 		});
 
 	});
