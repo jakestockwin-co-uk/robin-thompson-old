@@ -2,9 +2,9 @@
 <p>
 	<a href="/research" onClick="changeDiv(event, '/research', 'Research', 'Research Interests', 'research')"><< Back to all research projects</a>
 	<br>
-	
+	{{#if data.project.bodyText }}
 	{{{ data.project.bodyText.html }}}
 	
 	<a href="/research" onClick="changeDiv(event, '/research', 'Research', 'Research Interests', 'research')"><< Back to all research projects</a>
-
+	{{/if}}
 </p>
