@@ -5,7 +5,9 @@ var Types = keystone.Field.Types;
  * Publication Model
  * ==========
  */
-var Publication = new keystone.List('Publication');
+var Publication = new keystone.List('Publication', {
+	map: { name: 'title' },
+});
 
 Publication.add({
 	title: { type: Types.Text, initial: true, required: true },

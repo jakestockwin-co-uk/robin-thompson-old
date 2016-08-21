@@ -5,7 +5,9 @@ var Types = keystone.Field.Types;
  * Course Model
  * ==========
  */
-var Course = new keystone.List('Course');
+var Course = new keystone.List('Course', {
+	map: { name: 'title' },
+});
 
 Course.add({
 	title: { type: Types.Text, initial: true, required: true },
