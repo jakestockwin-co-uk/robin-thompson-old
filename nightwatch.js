@@ -44,10 +44,10 @@ function runSelenium (done) {
 	selenium = child_process.spawn('java',
 		[
 			'-jar',
-			seleniumServer.path
+			seleniumServer.path,
 		],
 		{
-			stdio: ['ignore', 'pipe', 'pipe']
+			stdio: ['ignore', 'pipe', 'pipe'],
 		});
 	var running = false;
 
