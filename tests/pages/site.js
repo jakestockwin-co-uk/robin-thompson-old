@@ -24,7 +24,7 @@ module.exports = {
 			return this;
 		},
 		assertNavbarUI: function () {
-			this.expect.element('@navbar').to.not.be.visible;
+			this.expect.element('@navbar').to.be.visible;
 			this.expect.element('@navbarRight').to.be.visible;
 			this.expect.element('@homeLink').to.be.visible;
 			this.expect.element('@researchLink').to.be.visible;
