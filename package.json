@@ -26,7 +26,7 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node keystone.js",
-    "test": "node keystone.js & serverpid=$!; node nightwatch.js; kill $serverpid;",
-    "test-travis": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node keystone.js & serverpid=$!; node nightwatch.js --env saucelabs-travis; kill $serverpid; fi"
+    "test": "node nightwatch.js",
+    "test-travis": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node nightwatch.js --env saucelabs-travis; fi"
   }
 }
