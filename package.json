@@ -18,10 +18,13 @@
   "devDependencies": {
     "eslint": "^2.12.0",
     "eslint-config-keystone": "^2.3.1",
-    "eslint-plugin-react": "^5.1.1"
+    "eslint-plugin-react": "^5.1.1",
+    "nightwatch": "^0.9.8",
+    "selenium-server-standalone-jar": "^2.53.1"
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "node keystone.js"
+    "start": "node keystone.js",
+    "test": "node keystone.js & serverpid=$!; node nightwatch.js; kill $serverpid;"
   }
 }
