@@ -5,7 +5,7 @@ module.exports = {
 	url: 'http://' + host + ':' + port,
 	elements: {
 		navbar: '.navbar',
-		navbarRight: '.navbar-right > li',
+		navbarRightLink: '.navbar-right > li',
 
 		// Navbar links
 		homeLink: 'li#home',
@@ -25,7 +25,7 @@ module.exports = {
 		},
 		assertNavbarUI: function () {
 			this.expect.element('@navbar').to.be.visible;
-			this.expect.element('@navbarRight').to.be.visible;
+			this.expect.element('@navbarRightLink').to.be.visible;
 			this.expect.element('@homeLink').to.be.visible;
 			this.expect.element('@researchLink').to.be.visible;
 			this.expect.element('@teachingLink').to.be.visible;
@@ -37,6 +37,10 @@ module.exports = {
 			this.expect.element('@twitter').to.be.visible;
 			this.expect.element('@sidebarCVHeader').to.be.visible;
 			return this;
+		},
+		clickNavbar: function (link) {
+			var elem = '@' + link + 'Link';
+			this.click(elem);
 		},
 		waitForPageLoad: function () {
 			this.waitForElementVisible('@navbar');

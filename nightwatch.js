@@ -5,12 +5,14 @@ var port = process.env.PORT || '3000';
 var child_process = require('child_process');
 var Nightwatch = require('nightwatch/lib/index.js');
 var seleniumServer = require('selenium-server-standalone-jar');
+var keytoneNightwatchE2e = require('keystone-nightwatch-e2e');
 
 process.env.SELENIUM_SERVER = seleniumServer.path;
 console.log(seleniumServer.path);
 
 var selenium = null;
 
+process.env.KEYSTONE_PAGE_OBJECTS = keytoneNightwatchE2e.pageObjectsPath;
 
 function checkKeystoneReady (done) {
 	async.retry({

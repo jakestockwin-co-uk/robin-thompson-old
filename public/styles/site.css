@@ -5856,6 +5856,9 @@ header {
   min-height: 100px;
   margin-bottom: 5px; }
 
+.identifier {
+  display: none; }
+
 .affix, .affix-top {
   position: static; }
 

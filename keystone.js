@@ -48,6 +48,9 @@ keystone.set('locals', {
 	editable: keystone.content.editable,
 });
 
+keystone.set('host', process.env.IP || 'localhost');
+keystone.set('port', process.env.PORT || '3000');
+
 // Load your project's Routes
 keystone.set('routes', require('./routes'));
 

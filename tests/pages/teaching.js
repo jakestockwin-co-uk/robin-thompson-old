@@ -15,5 +15,9 @@ module.exports = {
 			this.waitForElementPresent('@identifier');
 			return this;
 		},
+		verifyPageLoad: function () {
+			this.expect.element('@identifier').to.be.present;
+			return this;
+		},
 	}],
 };
