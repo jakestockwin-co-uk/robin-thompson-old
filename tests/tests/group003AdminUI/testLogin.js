@@ -13,6 +13,6 @@ module.exports = {
 	},
 	'Signin page should allow users to log in': function (browser) {
 		browser.adminUISignin.signin('user@keystonejs.com', 'admin');
-		browser.adminUIApp.waitForHomeScreen();
+		browser.adminUIApp.waitForHomeScreen(60000); // Long timeout for first time adminUI loads.
 	},
 };
