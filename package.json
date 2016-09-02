@@ -20,14 +20,12 @@
     "eslint": "^2.12.0",
     "eslint-config-keystone": "^2.3.1",
     "eslint-plugin-react": "^5.1.1",
-    "keystone-nightwatch-e2e": "^0.1.3",
-    "nightwatch": "^0.9.8",
-    "selenium-server-standalone-jar": "^2.53.1"
+    "keystone-nightwatch-e2e": "^0.1.6"
   },
   "scripts": {
     "lint": "eslint .",
     "start": "node keystone.js",
-    "test": "node nightwatch.js",
-    "test-travis": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node nightwatch.js --env saucelabs-travis; fi"
+    "test": "node keystone.js --test",
+    "test-travis": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node keystone.js --test --env saucelabs-travis; fi"
   }
 }
