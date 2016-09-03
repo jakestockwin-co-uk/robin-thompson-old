@@ -11,10 +11,7 @@ before_script:
   - sleep 15
 
 script:
-  - node keystone.js &
-  - pid=$!
   - npm run test-travis
-  - kill $pid
 
 before_deploy:
   - wget https://raw.githubusercontent.com/jakestockwin-co-uk/deployment/master/travis-deploy.sh && chmod +x travis-deploy.sh
