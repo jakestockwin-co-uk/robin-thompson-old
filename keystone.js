@@ -21,8 +21,8 @@ process.env.SELENIUM_SERVER = keystoneNightwatchE2e.seleniumPath;
 process.env.KEYSTONE_PAGE_OBJECTS = keystoneNightwatchE2e.pageObjectsPath;
 
 // determine the mongo uri and database name
-var dbName = '/e2e' + (keystone.get('port') || 3000);
-var mongoUri = 'mongodb://' + (keystone.get('host') || 'localhost') + dbName;
+var dbName = test ? '/test' : '/robin-thompson';
+var mongoUri = process.env.MONGO_URI || 'mongodb://' + (keystone.get('host') || 'localhost') + dbName;
 
 
 // Initialise Keystone with your project's configuration.
@@ -38,6 +38,8 @@ keystone.init({
 	'favicon': 'public/favicon.ico',
 	'views': 'templates/views',
 	'view engine': 'hbs',
+
+	'mongo': mongoUri,
 
 	'custom engine': handlebars.create({
 		layoutsDir: 'templates/views/layouts',

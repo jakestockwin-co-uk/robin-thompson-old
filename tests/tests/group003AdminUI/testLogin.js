@@ -1,9 +1,8 @@
 module.exports = {
 	'before': function (browser) {
-		browser.app = browser.page.adminUIApp();
-		browser.url('http://localhost:3000/keystone');
-		browser.adminUISignin = browser.page.adminUISignin();
 		browser.adminUIApp = browser.page.adminUIApp();
+		browser.adminUISignin = browser.page.adminUISignin();
+		browser.adminUIApp.navigate();
 	},
 	'after': function (browser) {
 		browser.end();

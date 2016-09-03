@@ -14,7 +14,7 @@ exports = module.exports = function (req, res) {
 
 	view.on('init', function (next) {
 
-		Publication.model.find().exec(function (err, results) {
+		Publication.model.find().sort('-year').exec(function (err, results) {
 
 			if (err || !results.length) {
 				return next(err);

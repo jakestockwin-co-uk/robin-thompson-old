@@ -22,4 +22,5 @@ Publication.add({
  * Registration
  */
 Publication.defaultColumns = 'title, authors, year, ref, link, linkname';
+Publication.defaultSort = '-year';
 Publication.register();
