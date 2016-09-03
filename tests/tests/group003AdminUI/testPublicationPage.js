@@ -79,9 +79,9 @@ module.exports = {
 		browser.publicationsPage.navigate();
 		browser.publicationsPage.waitForPageLoad();
 		browser.publicationsPage.assertUI();
-		// browser.publicationsPage.assertFirstPublication('Test Author Test publication (2016) Test ref (Test link name)');
-		browser.publicationsPage.assertFirstPublicationContains('Test Author Test publication');
-		browser.publicationsPage.assertFirstPublicationLink('http://www.example.com/');
+		// browser.publicationsPage.assertNthPublication(1, 'Test Author Test publication (2016) Test ref (Test link name)');
+		browser.publicationsPage.assertNthPublicationContains(1, 'Test Author Test publication');
+		browser.publicationsPage.assertNthPublicationLink(1, 'http://www.example.com/');
 	},
 
 	'User should be able to log into the admin UI and update the publication, e.g. by removing the link': function (browser) {
@@ -121,9 +121,9 @@ module.exports = {
 		// Now check updated inputs on the page
 		browser.publicationsPage.navigate();
 		browser.publicationsPage.waitForPageLoad();
-		// browser.publicationsPage.assertFirstPublication('Test Author Test publication (2016) Test ref');
-		browser.publicationsPage.assertFirstPublicationContains('Test Author Test publication');
-		browser.publicationsPage.assertFirstPublicationLinkNotPresent();
+		// browser.publicationsPage.assertNthPublication(1, 'Test Author Test publication (2016) Test ref');
+		browser.publicationsPage.assertNthPublicationContains(1, 'Test Author Test publication');
+		browser.publicationsPage.assertNthPublicationLinkNotPresent(1);
 	},
 
 	'User should be able to delete a publication': function (browser) {
@@ -139,7 +139,7 @@ module.exports = {
 	'Deleted publication should not display on the publications page': function (browser) {
 		browser.publicationsPage.navigate();
 		browser.publicationsPage.waitForPageLoad();
-		browser.publicationsPage.assertFirstPublicationNotPresent();
+		browser.publicationsPage.assertNthPublicationNotPresent(1);
 	},
 
 	'User should be able to add multiple publications': function (browser) {
@@ -211,13 +211,13 @@ module.exports = {
 		browser.publicationsPage.navigate();
 		browser.publicationsPage.waitForPageLoad();
 		// The following is disabled because of timezone issues. Ref: https://github.com/keystonejs/keystone/issues/1702
-		// browser.publicationsPage.assertFirstPublication('Author This should display 1st (2016) Test');
-		// browser.publicationsPage.assertSecondPublication('Author This should display 2nd (2015) Test');
-		// browser.publicationsPage.assertThirdPublication('Author This should display 3rd (2014) Test');
-		// browser.publicationsPage.assertFourthPublication('Author This should display 4th (2013) Test');
-		browser.publicationsPage.assertFirstPublicationContains('Author This should display 1st');
-		browser.publicationsPage.assertSecondPublicationContains('Author This should display 2nd');
-		browser.publicationsPage.assertThirdPublicationContains('Author This should display 3rd');
-		browser.publicationsPage.assertFourthPublicationContains('Author This should display 4th');
+		// browser.publicationsPage.assertNthPublication(1, 'Author This should display 1st (2016) Test');
+		// browser.publicationsPage.assertNthPublication(2, 'Author This should display 2nd (2015) Test');
+		// browser.publicationsPage.assertNthPublication(3, 'Author This should display 3rd (2014) Test');
+		// browser.publicationsPage.assertNthPublication(4, 'Author This should display 4th (2013) Test');
+		browser.publicationsPage.assertNthPublicationContains(1, 'Author This should display 1st');
+		browser.publicationsPage.assertNthPublicationContains(2, 'Author This should display 2nd');
+		browser.publicationsPage.assertNthPublicationContains(3, 'Author This should display 3rd');
+		browser.publicationsPage.assertNthPublicationContains(4, 'Author This should display 4th');
 	},
 };
