@@ -11,7 +11,7 @@ module.exports = {
 	'after': function (browser) {
 		browser.end();
 	},
-	'Navbar should initially display correctly': function (browser) {
+	'Clicking on navbar should change to the correct pages': function (browser) {
 		browser.site.clickNavbar('home');
 		browser.index.verifyPageLoad();
 		browser.site.clickNavbar('research');
