@@ -35,6 +35,11 @@ module.exports = {
 			});
 			return this;
 		},
+		assertFirstPublicationContains: function (value) {
+			this.expect.element('@firstPublication').to.be.visible;
+			this.assert.containsText('@firstPublication', value);
+			return this;
+		},
 		assertFirstPublicationLink: function (value) {
 			this.expect.element('@firstPublicationLink').to.be.visible;
 			this.assert.attributeEquals('@firstPublicationLink', 'href', value);
@@ -56,6 +61,11 @@ module.exports = {
 			});
 			return this;
 		},
+		assertSecondPublicationContains: function (value) {
+			this.expect.element('@secondPublication').to.be.visible;
+			this.assert.containsText('@secondPublication', value);
+			return this;
+		},
 		assertThirdPublication: function (value) {
 			this.expect.element('@thirdPublication').to.be.visible;
 			this.getText('@thirdPublication', function (result) {
@@ -64,12 +74,22 @@ module.exports = {
 			});
 			return this;
 		},
+		assertThirdPublicationContains: function (value) {
+			this.expect.element('@thirdPublication').to.be.visible;
+			this.assert.containsText('@thirdPublication', value);
+			return this;
+		},
 		assertFourthPublication: function (value) {
 			this.expect.element('@fourthPublication').to.be.visible;
 			this.getText('@fourthPublication', function (result) {
 				this.assert.equal(result.state, 'success');
 				this.assert.equal(result.value, value);
 			});
+			return this;
+		},
+		assertFourthPublicationContains: function (value) {
+			this.expect.element('@fourthPublication').to.be.visible;
+			this.assert.containsText('@fourthPublication', value);
 			return this;
 		},
 	}],
