@@ -9,19 +9,23 @@
     "dotenv": "^2.0.0",
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.5",
-    "keystone": "^0.3.19",
+    "keystone": "^4.0.0-beta",
     "lodash": "^4.13.1",
     "moment": "^2.10.6",
     "node-sass": "^3.3.2",
-    "node-sass-middleware": "^0.9.7"
+    "node-sass-middleware": "^0.9.7",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "eslint": "^2.12.0",
     "eslint-config-keystone": "^2.3.1",
-    "eslint-plugin-react": "^6.2.0"
+    "eslint-plugin-react": "^6.2.0",
+    "keystone-nightwatch-e2e": "^0.1.6"
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "node keystone.js"
+    "start": "node keystone.js",
+    "test": "node keystone.js --test",
+    "test-travis": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node keystone.js --test --env saucelabs-travis; fi"
   }
 }
