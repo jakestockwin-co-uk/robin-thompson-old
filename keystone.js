@@ -22,7 +22,7 @@ process.env.KEYSTONE_PAGE_OBJECTS = keystoneNightwatchE2e.pageObjectsPath;
 
 // determine the mongo uri and database name
 var dbName = test ? '/test' : '/robin-thompson';
-var mongoUri = process.env.MONGO_URI || 'mongodb://' + (keystone.get('host') || 'localhost') + dbName;
+var mongoUri = test ? 'mongodb://' + (keystone.get('host') || 'localhost') + dbName : process.env.MONGO_URI || 'mongodb://' + (keystone.get('host') || 'localhost') + dbName;
 
 
 // Initialise Keystone with your project's configuration.
