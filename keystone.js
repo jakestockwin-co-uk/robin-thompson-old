@@ -5,20 +5,24 @@ require('dotenv').config();
 // Require keystone
 var keystone = require('keystone');
 var handlebars = require('express-handlebars');
-// Require keystone-nightwatch-e2e
-var keystoneNightwatchE2e = require('keystone-nightwatch-e2e');
-var async = require('async');
-var moment = require('moment');
-var mongoose = require('mongoose');
-var request = require('superagent');
-
 
 // Testing stuff
 var test = (process.argv.indexOf('--test') > -1);
 
+
+if (test) {
+	// Require keystone-nightwatch-e2e
+	var keystoneNightwatchE2e = require('keystone-nightwatch-e2e');
+	var async = require('async');
+	var moment = require('moment');
+	var mongoose = require('mongoose');
+	var request = require('superagent');
+
+
 // Set app-specific env for nightwatch session
-process.env.SELENIUM_SERVER = keystoneNightwatchE2e.seleniumPath;
-process.env.KEYSTONE_PAGE_OBJECTS = keystoneNightwatchE2e.pageObjectsPath;
+	process.env.SELENIUM_SERVER = keystoneNightwatchE2e.seleniumPath;
+	process.env.KEYSTONE_PAGE_OBJECTS = keystoneNightwatchE2e.pageObjectsPath;
+}
 
 // determine the mongo uri and database name
 var dbName = test ? '/test' : '/robin-thompson';
