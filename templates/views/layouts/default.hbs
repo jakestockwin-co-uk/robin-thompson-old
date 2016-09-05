@@ -61,9 +61,11 @@
 							<div class="twitter">
 								<a class="twitter-timeline" href="https://twitter.com/RobinNThompson" data-widget-id="680838504599924740">Tweets by @RobinNThompson</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 							</div>
-							<ul class="nav nav-stacked">
-								<li><a href="/downloads/RobinThompsonCV.pdf" target="_blank"><h3 class="highlight" style="margin-top:0px;">CV</h3></a></li>
-							</ul>
+							{{#if CVUrl}}
+								<ul class="nav nav-stacked">
+									<li><a href={{CVUrl}} target="_blank"><h3 class="highlight" style="margin-top:0px;">CV</h3></a></li>
+								</ul>
+							{{/if}}
 						</div>
 					</div>
 					<div id="animateMe" class="col col-sm-9">

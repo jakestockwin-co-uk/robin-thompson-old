@@ -35,7 +35,6 @@ module.exports = {
 		assertSidebarUI: function () {
 			this.expect.element('@sidebarTwitterHeader').to.be.visible;
 			this.expect.element('@twitter').to.be.visible;
-			this.expect.element('@sidebarCVHeader').to.be.visible;
 			return this;
 		},
 		clickNavbar: function (link) {

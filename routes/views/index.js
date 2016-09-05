@@ -10,6 +10,19 @@ exports = module.exports = function (req, res) {
 	locals.section = 'home';
 	locals.title = 'Robin Thompson';
 
+	view.on('init', function (next) {
+		keystone.list('CV').model.findOne({ CV: { $exists: true } }).sort('-updatedAt').exec(function (err, result) {
+			if (err) {
+				next(err);
+			} else {
+				if (result) {
+					locals.CVUrl = result.CV.url;
+				}
+				next();
+			}
+		});
+	});
+
 	// Render the view
 	view.render('index');
 };
