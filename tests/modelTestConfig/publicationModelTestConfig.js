@@ -5,7 +5,7 @@ var TextFieldTestObject = require(path.resolve(fieldTestObjectsPath, 'TextFieldT
 var DateFieldTestObject = require(path.resolve(fieldTestObjectsPath, 'DateFieldTestObject'));
 var UrlFieldTestObject = require(path.resolve(fieldTestObjectsPath, 'UrlFieldTestObject'));
 
-module.exports = function BooleanModelTestConfig (config) {
+module.exports = function PublicationModelTestConfig (config) {
 	return {
 		title: new TextFieldTestObject(objectAssign({}, config, { fieldName: 'title' })),
 		authors: new TextFieldTestObject(objectAssign({}, config, { fieldName: 'authors' })),
