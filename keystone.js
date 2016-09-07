@@ -28,68 +28,72 @@ if (test) {
 var dbName = test ? '/test' : '/robin-thompson';
 var mongoUri = test ? 'mongodb://' + (keystone.get('host') || 'localhost') + dbName : process.env.MONGO_URI || 'mongodb://' + (keystone.get('host') || 'localhost') + dbName;
 
+function configureKeystone () {
 
 // Initialise Keystone with your project's configuration.
 // See http://keystonejs.com/guide/config for available options
 // and documentation.
 
-keystone.init({
-	'name': 'Robin Thompson',
-	'brand': 'Robin Thompson',
+	keystone.init({
+		'name': 'Robin Thompson',
+		'brand': 'Robin Thompson',
 
-	'sass': 'public',
-	'static': 'public',
-	'favicon': 'public/favicon.ico',
-	'views': 'templates/views',
-	'view engine': 'hbs',
+		'sass': 'public',
+		'static': 'public',
+		'favicon': 'public/favicon.ico',
+		'views': 'templates/views',
+		'view engine': 'hbs',
 
-	'mongo': mongoUri,
+		'mongo': mongoUri,
 
-	'custom engine': handlebars.create({
-		layoutsDir: 'templates/views/layouts',
-		partialsDir: 'templates/views/partials',
-		defaultLayout: 'default',
-		helpers: require('./templates/views/helpers')(),
-		extname: '.hbs',
-	}).engine,
+		'custom engine': handlebars.create({
+			layoutsDir: 'templates/views/layouts',
+			partialsDir: 'templates/views/partials',
+			defaultLayout: 'default',
+			helpers: require('./templates/views/helpers')(),
+			extname: '.hbs',
+		}).engine,
 
-	'auto update': true,
-	'session': true,
-	'auth': true,
-	'user model': 'User',
-	'model prefix': 'robin_thompson',
-});
+		'auto update': true,
+		'session': true,
+		'auth': true,
+		'user model': 'User',
+		'model prefix': 'robin_thompson',
+	});
 
 // Load your project's Models
-keystone.import('models');
+	keystone.import('models');
 
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely
 // for each request) should be added to ./routes/middleware.js
-keystone.set('locals', {
-	_: require('lodash'),
-	env: keystone.get('env'),
-	utils: keystone.utils,
-	editable: keystone.content.editable,
-});
+	keystone.set('locals', {
+		_: require('lodash'),
+		env: keystone.get('env'),
+		utils: keystone.utils,
+		editable: keystone.content.editable,
+	});
 
-keystone.set('host', process.env.IP || 'localhost');
-keystone.set('port', process.env.PORT || '3000');
+	keystone.set('host', process.env.IP || 'localhost');
+	keystone.set('port', process.env.PORT || '3000');
 
 // Load your project's Routes
-keystone.set('routes', require('./routes'));
+	keystone.set('routes', require('./routes'));
 
 // Configure the navigation bar in Keystone's Admin UI
-keystone.set('nav', {
-	content: ['courses', 'publications', 'research-projects'],
-	users: 'users',
-});
+	keystone.set('nav', {
+		content: ['courses', 'publications', 'research-projects'],
+		users: 'users',
+	});
 
 // Start Keystone to connect to your database and initialise the web server
-if (keystone.get('env') === 'production') {
-	keystone.set('session store', 'connect-mongo');
+	if (keystone.get('env') === 'production') {
+		keystone.set('session store', 'connect-mongo');
+	}
+
 }
 if (!test) {
+	configureKeystone();
 	keystone.start();
 } else {
 	runTests();
@@ -170,6 +174,11 @@ function runTests () {
 			}	else {
 				cb();
 			}
+		},
+
+		function (cb) {
+			configureKeystone();
+			cb();
 		},
 
 		function (cb) {
