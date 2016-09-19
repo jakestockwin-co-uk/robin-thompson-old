@@ -30,7 +30,7 @@
 		<script src="/js/changeDiv.js"></script>
 		<script src="/js/googleAnalytics.js"></script>
 	</head>
-	<body>
+	<body onload="updateState({{# each navLinks}}{{#ifeq ../section key}}'{{href}}','{{label}}','{{title}}','{{key}}'{{/ifeq}}{{/each}})">
 		<nav class="navbar navbar-static">
 			<div class="container">
 				<div class="nav-collapse collase">
