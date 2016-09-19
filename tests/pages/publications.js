@@ -5,10 +5,12 @@ module.exports = {
 	url: 'http://' + host + ':' + port + '/publications',
 	elements: {
 		identifier: '#publication.identifier',
+		heading: '#heading',
 	},
 	commands: [{
 		assertUI: function () {
 			this.expect.element('@identifier').to.be.present;
+			this.expect.element('@heading').text.to.equal('Publications');
 			return this;
 		},
 		waitForPageLoad: function () {

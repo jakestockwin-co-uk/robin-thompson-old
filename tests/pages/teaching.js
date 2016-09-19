@@ -5,6 +5,7 @@ module.exports = {
 	url: 'http://' + host + ':' + port + '/teaching',
 	elements: {
 		identifier: '#teaching.identifier',
+		heading: '#heading',
 
 		firstYearTitle: '#firstYearCoursesTitle',
 		firstYearList: '#firstYearCourses',
@@ -18,6 +19,7 @@ module.exports = {
 	commands: [{
 		assertUI: function () {
 			this.expect.element('@identifier').to.be.present;
+			this.expect.element('@heading').text.to.equal('Teaching');
 			return this;
 		},
 

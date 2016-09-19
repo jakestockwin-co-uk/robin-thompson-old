@@ -6,11 +6,13 @@ module.exports = {
 	elements: {
 		identifier: '#research.identifier',
 		researchList: '#research-list',
+		heading: '#heading',
 	},
 	commands: [{
 		assertUI: function () {
 			this.expect.element('@identifier').to.be.present;
 			this.expect.element('@researchList').to.be.visible;
+			this.expect.element('@heading').text.to.equal('Research Interests');
 			return this;
 		},
 		assertResearchListVisible: function () {
