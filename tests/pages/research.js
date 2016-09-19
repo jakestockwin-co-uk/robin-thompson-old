@@ -5,10 +5,43 @@ module.exports = {
 	url: 'http://' + host + ':' + port + '/research',
 	elements: {
 		identifier: '#research.identifier',
+		researchList: '#research-list',
 	},
 	commands: [{
 		assertUI: function () {
 			this.expect.element('@identifier').to.be.present;
+			this.expect.element('@researchList').to.be.visible;
+			return this;
+		},
+		assertResearchListVisible: function () {
+			this.expect.element('@researchList').to.be.visible;
+			return this;
+		},
+		assertNthResearchProjectVisible: function (n) {
+			this.expect.element(getNthResearchSelector(n)).to.be.visible;
+			return this;
+		},
+		assertNthResearchProjectNotPresent: function (n) {
+			this.expect.element(getNthResearchSelector(n)).to.not.be.present;
+			return this;
+		},
+		assertNResearchProjectsVisible: function (n, exact) {
+			if (n > 0) {
+				for (var i = 1; i <= n; i++) {
+					this.assertNthResearchProjectVisible(n);
+				}
+			}
+			if (exact) {
+				this.assertNthResearchProjectNotPresent(n + 1);
+			}
+			return this;
+		},
+		assertNthResearchProjectText: function (n, value) {
+			this.expect.element(getNthResearchLinkSelector(n)).text.to.equal(value);
+			return this;
+		},
+		clickNthResearchProject: function (n) {
+			this.click(getNthResearchLinkSelector(n));
 			return this;
 		},
 		waitForPageLoad: function () {
@@ -21,3 +54,11 @@ module.exports = {
 		},
 	}],
 };
+
+function getNthResearchSelector (n) {
+	return '#research-list li:nth-of-type(' + n + ')';
+}
+
+function getNthResearchLinkSelector (n) {
+	return '#research-list li:nth-of-type(' + n + ') a';
+}
