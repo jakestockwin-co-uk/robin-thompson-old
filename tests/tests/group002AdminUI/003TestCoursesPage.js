@@ -12,6 +12,9 @@ module.exports = {
 		browser.adminUIApp.navigate();
 		browser.adminUISignin.signin('user@keystonejs.com', 'admin');
 		browser.adminUIApp.waitForHomeScreen();
+		browser.adminUIInitialForm.setDefaultModelTestConfig(CourseModelTestConfig);
+		browser.adminUIItemScreen.setDefaultModelTestConfig(CourseModelTestConfig);
+		browser.adminUIListScreen.setDefaultModelTestConfig(CourseModelTestConfig);
 	},
 	'after': function (browser) {
 		browser.end();
@@ -21,49 +24,41 @@ module.exports = {
 	'Courses page should display correctly in the initial modal': function (browser) {
 		browser.adminUIApp.openList({ section: 'Content', list: 'Courses' });
 		browser.adminUIApp.waitForListScreen();
-		browser.adminUIListScreen.createFirstItem();
+		browser.adminUIListScreen.clickCreateItemButton();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.assertFieldUIVisible({
-			modelTestConfig: CourseModelTestConfig,
-			fields: [{ name: 'title' }, { name: 'courseNumber' }, { name: 'year', options: { editForm: 'false' } }],
-		});
+		browser.adminUIInitialForm.assertFieldUIVisible([
+			{ name: 'title' },
+			{ name: 'courseNumber' },
+			{ name: 'year', options: { editForm: 'false' } },
+		]);
 	},
 
 	'Admin UI should allow user to add a course': function (browser) {
 
 		// Fill test inputs
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course' },
-				courseNumber: { value: '1111' },
-				year: { value: 'Prelims' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course' } },
+			{ name: 'courseNumber', input: { value: '1111' } },
+			{ name: 'year', input: { value: 'Prelims' } },
+		]);
 
 		// Check test inputs in inital form
-		browser.adminUIInitialForm.assertFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course' },
-				courseNumber: { value: '1111' },
-				year: { value: 'Prelims' },
-			},
-		});
+		browser.adminUIInitialForm.assertFieldInputs([
+			{ name: 'title', input: { value: 'Test course' } },
+			{ name: 'courseNumber', input: { value: '1111' } },
+			{ name: 'year', input: { value: 'Prelims' } },
+		]);
 
 		// Save inputs
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		// Check test inputs in edit form
-		browser.adminUIItemScreen.assertFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course' },
-				courseNumber: { value: '1111' },
-				year: { value: 'Prelims' },
-			},
-		});
+		browser.adminUIItemScreen.assertFieldInputs([
+			{ name: 'title', input: { value: 'Test course' } },
+			{ name: 'courseNumber', input: { value: '1111' } },
+			{ name: 'year', input: { value: 'Prelims' } },
+		]);
 	},
 
 	'The added course should display correctly on the courses page': function (browser) {
@@ -83,18 +78,15 @@ module.exports = {
 		browser.adminUIApp.waitForHomeScreen();
 		browser.adminUIApp.openList({ section: 'Content', list: 'Courses' });
 		browser.adminUIApp.waitForListScreen();
-		browser.adminUIListScreen.navigateToFirstItem();
+		browser.adminUIListScreen.clickItemFieldValue([{ name: 'title', row: '1', column: '2' }]);
 		browser.adminUIApp.waitForItemScreen();
-		browser.adminUIItemScreen.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Updated Test Course' },
-				courseNumber: { value: '2222' },
-				year: { value: 'Part B' },
-			},
-		});
+		browser.adminUIItemScreen.fillFieldInputs([
+			{ name: 'title', input: { value: ' Updated Test Course' } },
+			{ name: 'courseNumber', input: { value: '2222' } },
+			{ name: 'year', input: { value: 'Part B' } },
+		]);
 		browser.adminUIItemScreen.save();
-		browser.adminUIItemScreen.assertFlashMessage('Your changes have been saved successfully');
+		browser.adminUIItemScreen.assertElementTextEquals('flashMessage', 'Your changes have been saved successfully');
 	},
 
 	'The updated course should display correctly on the courses page': function (browser) {
@@ -114,7 +106,7 @@ module.exports = {
 		browser.adminUIApp.waitForHomeScreen();
 		browser.adminUIApp.openList({ section: 'Content', list: 'Courses' });
 		browser.adminUIApp.waitForListScreen();
-		browser.adminUIListScreen.deleteItem('@firstItemDeleteIcon');
+		browser.adminUIListScreen.clickDeleteItemIcon([{ row: 1, column: 1 }]);
 		browser.adminUIApp.waitForDeleteConfirmationScreen();
 		browser.adminUIDeleteConfirmation.delete();
 		browser.adminUIApp.waitForListScreen();
@@ -136,120 +128,93 @@ module.exports = {
 		browser.adminUIApp.openList({ section: 'Content', list: 'Courses' });
 		browser.adminUIApp.waitForListScreen();
 
-		browser.adminUIListScreen.createFirstItem();
+		browser.adminUIListScreen.clickCreateItemButton();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 1' },
-				courseNumber: { value: '1111' },
-				year: { value: 'Prelims' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 1' } },
+			{ name: 'courseNumber', input: { value: '1111' } },
+			{ name: 'year', input: { value: 'Prelims' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 2' },
-				courseNumber: { value: '2222' },
-				year: { value: 'Prelims' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 2' } },
+			{ name: 'courseNumber', input: { value: '2222' } },
+			{ name: 'year', input: { value: 'Prelims' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 3' },
-				courseNumber: { value: '3333' },
-				year: { value: 'Part A' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 3' } },
+			{ name: 'courseNumber', input: { value: '3333' } },
+			{ name: 'year', input: { value: 'Part A' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 4' },
-				courseNumber: { value: '4444' },
-				year: { value: 'Part A' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 4' } },
+			{ name: 'courseNumber', input: { value: '4444' } },
+			{ name: 'year', input: { value: 'Part A' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 5' },
-				courseNumber: { value: '5555' },
-				year: { value: 'Part A' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 5' } },
+			{ name: 'courseNumber', input: { value: '5555' } },
+			{ name: 'year', input: { value: 'Part A' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 6' },
-				courseNumber: { value: '6666' },
-				year: { value: 'Part A' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 6' } },
+			{ name: 'courseNumber', input: { value: '6666' } },
+			{ name: 'year', input: { value: 'Part A' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 7' },
-				courseNumber: { value: '7777' },
-				year: { value: 'Part B' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 7' } },
+			{ name: 'courseNumber', input: { value: '7777' } },
+			{ name: 'year', input: { value: 'Part B' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 8' },
-				courseNumber: { value: '8888' },
-				year: { value: 'Part B' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 8' } },
+			{ name: 'courseNumber', input: { value: '8888' } },
+			{ name: 'year', input: { value: 'Part B' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs({
-			modelTestConfig: CourseModelTestConfig,
-			fields: {
-				title: { value: 'Test course 9' },
-				courseNumber: { value: '9999' },
-				year: { value: 'Part C' },
-			},
-		});
+		browser.adminUIInitialForm.fillFieldInputs([
+			{ name: 'title', input: { value: 'Test course 9' } },
+			{ name: 'courseNumber', input: { value: '9999' } },
+			{ name: 'year', input: { value: 'Part C' } },
+		]);
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 	},
