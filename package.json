@@ -27,6 +27,6 @@
     "lint": "eslint .",
     "start": "node keystone.js",
     "test": "node keystone.js --test",
-    "test-travis": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node keystone.js --test --env saucelabs-travis; fi"
+    "test-travis": "if [ -n \"$SAUCE_ACCESS_KEY\" ]; then node keystone.js --test; fi"
   }
 }
