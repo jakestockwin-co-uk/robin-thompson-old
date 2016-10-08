@@ -21,7 +21,7 @@
     "eslint": "^3.6.0",
     "eslint-config-keystone": "^2.3.1",
     "eslint-plugin-react": "^6.2.0",
-    "keystone-nightwatch-e2e": "^0.1.10"
+    "keystone-nightwatch-e2e": "^0.1.11"
   },
   "scripts": {
     "lint": "eslint .",
