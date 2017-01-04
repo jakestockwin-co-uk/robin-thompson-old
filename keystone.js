@@ -45,6 +45,7 @@ function configureKeystone () {
 		'view engine': 'hbs',
 
 		'mongo': mongoUri,
+		'mongo options': { server: { keepAlive: 1 } },
 
 		'custom engine': handlebars.create({
 			layoutsDir: 'templates/views/layouts',
