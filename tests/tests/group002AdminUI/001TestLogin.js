@@ -11,7 +11,7 @@ module.exports = {
 		browser.adminUISignin.assertUI();
 	},
 	'Signin page should allow users to log in': function (browser) {
-		browser.adminUISignin.signin('user@keystonejs.com', 'admin');
+		browser.adminUISignin.signin({ user: 'user@keystonejs.com', password: 'admin', wait: false });
 		browser.adminUIApp.waitForHomeScreen(60000); // Long timeout for first time adminUI loads.
 	},
 };

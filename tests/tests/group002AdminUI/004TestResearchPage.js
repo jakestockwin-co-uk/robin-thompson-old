@@ -11,8 +11,8 @@ module.exports = {
 		browser.researchPage = browser.page.research();
 		browser.projectPage = browser.page.researchProject();
 		browser.adminUIApp.navigate();
-		browser.adminUISignin.signin('user@keystonejs.com', 'admin');
-		browser.adminUIApp.waitForHomeScreen();
+		browser.adminUISignin.signin({ user: 'user@keystonejs.com', password: 'admin', wait: false });
+		browser.adminUIApp.waitForHomeScreen(60000); // Long timeout for first time adminUI loads.
 		browser.adminUIInitialForm.setDefaultModelTestConfig(ResearchModelTestConfig);
 		browser.adminUIItemScreen.setDefaultModelTestConfig(ResearchModelTestConfig);
 		browser.adminUIListScreen.setDefaultModelTestConfig(ResearchModelTestConfig);
@@ -27,32 +27,32 @@ module.exports = {
 		browser.adminUIApp.waitForListScreen();
 		browser.adminUIListScreen.clickCreateItemButton();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.assertFieldUIVisible([{ name: 'title' }, { name: 'bodyText' }]);
+		browser.adminUIInitialForm.assertFieldUIVisible({ fields: [{ name: 'title' }, { name: 'bodyText' }] });
 	},
 
 	'Admin UI should allow user to add a research project': function (browser) {
 
 		// Fill test inputs
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test research' } },
 			{ name: 'bodyText', input: { md: 'Some example markdown, with _italics_' } },
-		]);
+		] });
 
 		// Check test inputs in inital form
-		browser.adminUIInitialForm.assertFieldInputs([
+		browser.adminUIInitialForm.assertFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test research' } },
 			{ name: 'bodyText', input: { md: 'Some example markdown, with _italics_' } },
-		]);
+		] });
 
 		// Save inputs
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		// Check test inputs in edit form
-		browser.adminUIItemScreen.assertFieldInputs([
+		browser.adminUIItemScreen.assertFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test research' } },
 			{ name: 'bodyText', input: { md: 'Some example markdown, with _italics_' } },
-		]);
+		] });
 	},
 
 	'The added research project should display correctly on the research page': function (browser) {
@@ -82,14 +82,17 @@ module.exports = {
 		browser.adminUIApp.waitForHomeScreen();
 		browser.adminUIApp.openList({ section: 'Content', list: 'ResearchProjects' });
 		browser.adminUIApp.waitForListScreen();
-		browser.adminUIListScreen.clickItemFieldValue([{ name: 'title', row: '1', column: '2' }]);
+		browser.adminUIListScreen.clickItemFieldValue({ fields: [{ name: 'title', row: '1', column: '2' }] });
 		browser.adminUIApp.waitForItemScreen();
-		browser.adminUIItemScreen.fillFieldInputs([
+		browser.adminUIItemScreen.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Updated Test research' } },
 			{ name: 'bodyText', input: { md: 'Some updated markdown, with _italics_' } },
-		]);
+		] });
 		browser.adminUIItemScreen.save();
-		browser.adminUIItemScreen.assertElementTextEquals('flashMessage', 'Your changes have been saved successfully');
+		browser.adminUIItemScreen.assertElementTextEquals({
+			element: '@flashMessage',
+			text: 'Your changes have been saved successfully'
+		});
 	},
 
 	'The updated research should display correctly on the research projects page': function (browser) {
@@ -113,7 +116,7 @@ module.exports = {
 		browser.adminUIApp.waitForHomeScreen();
 		browser.adminUIApp.openList({ section: 'Content', list: 'ResearchProjects' });
 		browser.adminUIApp.waitForListScreen();
-		browser.adminUIListScreen.clickDeleteItemIcon([{ row: 1, column: 1 }]);
+		browser.adminUIListScreen.clickDeleteItemIcon({ icons: [{ row: 1, column: 1 }] });
 		browser.adminUIApp.waitForDeleteConfirmationScreen();
 		browser.adminUIDeleteConfirmation.delete();
 		browser.adminUIApp.waitForListScreen();
@@ -134,42 +137,42 @@ module.exports = {
 
 		browser.adminUIListScreen.clickCreateItemButton();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test research 1' } },
 			{ name: 'bodyText', input: { md: 'Research Project 1' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test research 2' } },
 			{ name: 'bodyText', input: { md: 'Research Project 2' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test research 3' } },
 			{ name: 'bodyText', input: { md: 'Research Project 3' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test research 4' } },
 			{ name: 'bodyText', input: { md: 'Research Project 4' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test research 5' } },
 			{ name: 'bodyText', input: { md: 'Research Project 5' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 	},
 

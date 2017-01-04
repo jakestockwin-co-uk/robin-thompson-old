@@ -10,8 +10,8 @@ module.exports = {
 		browser.adminUIDeleteConfirmation = browser.page.adminUIDeleteConfirmation();
 		browser.teachingPage = browser.page.teaching();
 		browser.adminUIApp.navigate();
-		browser.adminUISignin.signin('user@keystonejs.com', 'admin');
-		browser.adminUIApp.waitForHomeScreen();
+		browser.adminUISignin.signin({ user: 'user@keystonejs.com', password: 'admin', wait: false });
+		browser.adminUIApp.waitForHomeScreen(60000); // Long timeout for first time adminUI loads.
 		browser.adminUIInitialForm.setDefaultModelTestConfig(CourseModelTestConfig);
 		browser.adminUIItemScreen.setDefaultModelTestConfig(CourseModelTestConfig);
 		browser.adminUIListScreen.setDefaultModelTestConfig(CourseModelTestConfig);
@@ -26,39 +26,39 @@ module.exports = {
 		browser.adminUIApp.waitForListScreen();
 		browser.adminUIListScreen.clickCreateItemButton();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.assertFieldUIVisible([
+		browser.adminUIInitialForm.assertFieldUIVisible({ fields: [
 			{ name: 'title' },
 			{ name: 'courseNumber' },
 			{ name: 'year', options: { editForm: 'false' } },
-		]);
+		] });
 	},
 
 	'Admin UI should allow user to add a course': function (browser) {
 
 		// Fill test inputs
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course' } },
 			{ name: 'courseNumber', input: { value: '1111' } },
 			{ name: 'year', input: { value: 'Prelims' } },
-		]);
+		] });
 
 		// Check test inputs in inital form
-		browser.adminUIInitialForm.assertFieldInputs([
+		browser.adminUIInitialForm.assertFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course' } },
 			{ name: 'courseNumber', input: { value: '1111' } },
 			{ name: 'year', input: { value: 'Prelims' } },
-		]);
+		] });
 
 		// Save inputs
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		// Check test inputs in edit form
-		browser.adminUIItemScreen.assertFieldInputs([
+		browser.adminUIItemScreen.assertFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course' } },
 			{ name: 'courseNumber', input: { value: '1111' } },
 			{ name: 'year', input: { value: 'Prelims' } },
-		]);
+		] });
 	},
 
 	'The added course should display correctly on the courses page': function (browser) {
@@ -78,15 +78,18 @@ module.exports = {
 		browser.adminUIApp.waitForHomeScreen();
 		browser.adminUIApp.openList({ section: 'Content', list: 'Courses' });
 		browser.adminUIApp.waitForListScreen();
-		browser.adminUIListScreen.clickItemFieldValue([{ name: 'title', row: '1', column: '2' }]);
+		browser.adminUIListScreen.clickItemFieldValue({ fields: [{ name: 'title', row: '1', column: '2' }] });
 		browser.adminUIApp.waitForItemScreen();
-		browser.adminUIItemScreen.fillFieldInputs([
+		browser.adminUIItemScreen.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: ' Updated Test Course' } },
 			{ name: 'courseNumber', input: { value: '2222' } },
 			{ name: 'year', input: { value: 'Part B' } },
-		]);
+		] });
 		browser.adminUIItemScreen.save();
-		browser.adminUIItemScreen.assertElementTextEquals('flashMessage', 'Your changes have been saved successfully');
+		browser.adminUIItemScreen.assertElementTextEquals({
+			element: '@flashMessage',
+			text: 'Your changes have been saved successfully',
+		});
 	},
 
 	'The updated course should display correctly on the courses page': function (browser) {
@@ -106,7 +109,7 @@ module.exports = {
 		browser.adminUIApp.waitForHomeScreen();
 		browser.adminUIApp.openList({ section: 'Content', list: 'Courses' });
 		browser.adminUIApp.waitForListScreen();
-		browser.adminUIListScreen.clickDeleteItemIcon([{ row: 1, column: 1 }]);
+		browser.adminUIListScreen.clickDeleteItemIcon({ icons: [{ row: 1, column: 1 }] });
 		browser.adminUIApp.waitForDeleteConfirmationScreen();
 		browser.adminUIDeleteConfirmation.delete();
 		browser.adminUIApp.waitForListScreen();
@@ -130,91 +133,91 @@ module.exports = {
 
 		browser.adminUIListScreen.clickCreateItemButton();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 1' } },
 			{ name: 'courseNumber', input: { value: '1111' } },
 			{ name: 'year', input: { value: 'Prelims' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 2' } },
 			{ name: 'courseNumber', input: { value: '2222' } },
 			{ name: 'year', input: { value: 'Prelims' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 3' } },
 			{ name: 'courseNumber', input: { value: '3333' } },
 			{ name: 'year', input: { value: 'Part A' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 4' } },
 			{ name: 'courseNumber', input: { value: '4444' } },
 			{ name: 'year', input: { value: 'Part A' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 5' } },
 			{ name: 'courseNumber', input: { value: '5555' } },
 			{ name: 'year', input: { value: 'Part A' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 6' } },
 			{ name: 'courseNumber', input: { value: '6666' } },
 			{ name: 'year', input: { value: 'Part A' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 7' } },
 			{ name: 'courseNumber', input: { value: '7777' } },
 			{ name: 'year', input: { value: 'Part B' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 8' } },
 			{ name: 'courseNumber', input: { value: '8888' } },
 			{ name: 'year', input: { value: 'Part B' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 
 		browser.adminUIItemScreen.new();
 		browser.adminUIApp.waitForInitialFormScreen();
-		browser.adminUIInitialForm.fillFieldInputs([
+		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 9' } },
 			{ name: 'courseNumber', input: { value: '9999' } },
 			{ name: 'year', input: { value: 'Part C' } },
-		]);
+		] });
 		browser.adminUIInitialForm.save();
 		browser.adminUIApp.waitForItemScreen();
 	},
