@@ -91,7 +91,7 @@ module.exports = {
 		browser.adminUIItemScreen.save();
 		browser.adminUIItemScreen.assertElementTextEquals({
 			element: '@flashMessage',
-			text: 'Your changes have been saved successfully'
+			text: 'Your changes have been saved successfully',
 		});
 	},
 
