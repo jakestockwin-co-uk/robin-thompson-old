@@ -12,7 +12,7 @@ module.exports = {
 		browser.projectPage = browser.page.researchProject();
 		browser.adminUIApp.navigate();
 		browser.adminUISignin.signin({ user: 'user@keystonejs.com', password: 'admin', wait: false });
-		browser.adminUIApp.waitForHomeScreen(60000); // Long timeout for first time adminUI loads.
+		browser.adminUIApp.waitForHomeScreen({ timeout: 60000 }); // Long timeout for first time adminUI loads.
 		browser.adminUIInitialForm.setDefaultModelTestConfig(ResearchModelTestConfig);
 		browser.adminUIItemScreen.setDefaultModelTestConfig(ResearchModelTestConfig);
 		browser.adminUIListScreen.setDefaultModelTestConfig(ResearchModelTestConfig);

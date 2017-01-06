@@ -11,7 +11,7 @@ module.exports = {
 		browser.teachingPage = browser.page.teaching();
 		browser.adminUIApp.navigate();
 		browser.adminUISignin.signin({ user: 'user@keystonejs.com', password: 'admin', wait: false });
-		browser.adminUIApp.waitForHomeScreen(60000); // Long timeout for first time adminUI loads.
+		browser.adminUIApp.waitForHomeScreen({ timeout: 60000 }); // Long timeout for first time adminUI loads.
 		browser.adminUIInitialForm.setDefaultModelTestConfig(CourseModelTestConfig);
 		browser.adminUIItemScreen.setDefaultModelTestConfig(CourseModelTestConfig);
 		browser.adminUIListScreen.setDefaultModelTestConfig(CourseModelTestConfig);
