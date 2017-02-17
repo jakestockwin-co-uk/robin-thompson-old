@@ -9,7 +9,7 @@
     "dotenv": "^2.0.0",
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.5",
-    "keystone": "^4.0.0-beta.5",
+    "keystone": "^4.0.0-beta.4",
     "keystone-storage-adapter-s3": "^1.1.1",
     "lodash": "^4.16.4",
     "moment": "^2.10.6",
@@ -21,7 +21,7 @@
     "eslint": "^3.6.0",
     "eslint-config-keystone": "^2.3.1",
     "eslint-plugin-react": "^6.2.0",
-    "keystone-nightwatch-e2e": "^0.2.14"
+    "keystone-nightwatch-e2e": "^0.1.16"
   },
   "scripts": {
     "lint": "eslint .",

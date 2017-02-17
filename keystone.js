@@ -20,8 +20,8 @@ if (test) {
 
 
 // Set app-specific env for nightwatch session
-	process.env.KNE_TEST_PATHS = 'tests/tests';
-	process.env.KNE_PAGE_OBJECT_PATHS = 'tests/pages';
+	process.env.SELENIUM_SERVER = keystoneNightwatchE2e.seleniumPath;
+	process.env.KEYSTONE_PAGE_OBJECTS = keystoneNightwatchE2e.pageObjectsPath;
 }
 
 // determine the mongo uri and database name
@@ -194,6 +194,7 @@ function runTests () {
 			if (runTests) {
 				runE2E({
 					keystone: keystone,
+					runSelenium: true,
 				}, cb);
 			} else {
 				cb();
@@ -202,18 +203,16 @@ function runTests () {
 
 	], function (err) {
 		var exitProcess = false;
-		var exitCode = 0;
 		if (err) {
 			console.error([moment().format('HH:mm:ss:SSS')] + ' e2e: ' + err);
 			exitProcess = true;
-			exitCode = 1;
 		}
 		if (runTests) {
 			exitProcess = true;
 		}
 		if (exitProcess) {
 			console.error([moment().format('HH:mm:ss:SSS')] + ' e2e: exiting');
-			process.exit(exitCode);
+			process.exit();
 		}
 	});
 }
