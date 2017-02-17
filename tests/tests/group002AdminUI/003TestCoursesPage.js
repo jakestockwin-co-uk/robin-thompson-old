@@ -28,7 +28,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.assertFieldUIVisible({ fields: [
 			{ name: 'title' },
-			{ name: 'courseNumber' },
+			{ name: 'link' },
 			{ name: 'year', options: { editForm: 'false' } },
 		] });
 	},
@@ -38,14 +38,14 @@ module.exports = {
 		// Fill test inputs
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course' } },
-			{ name: 'courseNumber', input: { value: '1111' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/113' } },
 			{ name: 'year', input: { value: 'Prelims' } },
 		] });
 
 		// Check test inputs in inital form
 		browser.adminUIInitialForm.assertFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course' } },
-			{ name: 'courseNumber', input: { value: '1111' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/113' } },
 			{ name: 'year', input: { value: 'Prelims' } },
 		] });
 
@@ -56,7 +56,7 @@ module.exports = {
 		// Check test inputs in edit form
 		browser.adminUIItemScreen.assertFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course' } },
-			{ name: 'courseNumber', input: { value: '1111' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/113' } },
 			{ name: 'year', input: { value: 'Prelims' } },
 		] });
 	},
@@ -66,7 +66,7 @@ module.exports = {
 		browser.teachingPage.waitForPageLoad();
 		browser.teachingPage.assertUI();
 		browser.teachingPage.assertNFirstYearCourses(1);
-		browser.teachingPage.assertNthFirstYearCourse(1, 'Test course', 'http://www0.maths.ox.ac.uk/courses/course/1111');
+		browser.teachingPage.assertNthFirstYearCourse(1, 'Test course', 'https://courses.maths.ox.ac.uk/node/113');
 		browser.teachingPage.assertNSecondYearCourses(0);
 		browser.teachingPage.assertNThirdYearCourses(0);
 		browser.teachingPage.assertNFourthYearCourses(0);
@@ -82,7 +82,7 @@ module.exports = {
 		browser.adminUIApp.waitForItemScreen();
 		browser.adminUIItemScreen.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: ' Updated Test Course' } },
-			{ name: 'courseNumber', input: { value: '2222' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/114' } },
 			{ name: 'year', input: { value: 'Part B' } },
 		] });
 		browser.adminUIItemScreen.save();
@@ -99,7 +99,7 @@ module.exports = {
 		browser.teachingPage.assertNFirstYearCourses(0);
 		browser.teachingPage.assertNSecondYearCourses(0);
 		browser.teachingPage.assertNThirdYearCourses(1);
-		browser.teachingPage.assertNthThirdYearCourse(1, 'Updated Test Course', 'http://www0.maths.ox.ac.uk/courses/course/2222');
+		browser.teachingPage.assertNthThirdYearCourse(1, 'Updated Test Course', 'https://courses.maths.ox.ac.uk/node/114');
 		browser.teachingPage.assertNFourthYearCourses(0);
 
 	},
@@ -135,7 +135,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 1' } },
-			{ name: 'courseNumber', input: { value: '1111' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/113' } },
 			{ name: 'year', input: { value: 'Prelims' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -145,7 +145,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 2' } },
-			{ name: 'courseNumber', input: { value: '2222' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/114' } },
 			{ name: 'year', input: { value: 'Prelims' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -155,7 +155,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 3' } },
-			{ name: 'courseNumber', input: { value: '3333' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/115' } },
 			{ name: 'year', input: { value: 'Part A' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -165,7 +165,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 4' } },
-			{ name: 'courseNumber', input: { value: '4444' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/116' } },
 			{ name: 'year', input: { value: 'Part A' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -175,7 +175,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 5' } },
-			{ name: 'courseNumber', input: { value: '5555' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/117' } },
 			{ name: 'year', input: { value: 'Part A' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -185,7 +185,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 6' } },
-			{ name: 'courseNumber', input: { value: '6666' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/118' } },
 			{ name: 'year', input: { value: 'Part A' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -195,7 +195,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 7' } },
-			{ name: 'courseNumber', input: { value: '7777' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/119' } },
 			{ name: 'year', input: { value: 'Part B' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -205,7 +205,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 8' } },
-			{ name: 'courseNumber', input: { value: '8888' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/120' } },
 			{ name: 'year', input: { value: 'Part B' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -215,7 +215,7 @@ module.exports = {
 		browser.adminUIApp.waitForInitialFormScreen();
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course 9' } },
-			{ name: 'courseNumber', input: { value: '9999' } },
+			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/121' } },
 			{ name: 'year', input: { value: 'Part C' } },
 		] });
 		browser.adminUIInitialForm.save();
@@ -227,18 +227,18 @@ module.exports = {
 		browser.teachingPage.waitForPageLoad();
 		browser.teachingPage.assertUI();
 		browser.teachingPage.assertNFirstYearCourses(2);
-		browser.teachingPage.assertNthFirstYearCourse(1, 'Test course 1', 'http://www0.maths.ox.ac.uk/courses/course/1111');
-		browser.teachingPage.assertNthFirstYearCourse(2, 'Test course 2', 'http://www0.maths.ox.ac.uk/courses/course/2222');
+		browser.teachingPage.assertNthFirstYearCourse(1, 'Test course 1', 'https://courses.maths.ox.ac.uk/node/113');
+		browser.teachingPage.assertNthFirstYearCourse(2, 'Test course 2', 'https://courses.maths.ox.ac.uk/node/114');
 		browser.teachingPage.assertNSecondYearCourses(4);
-		browser.teachingPage.assertNthSecondYearCourse(1, 'Test course 3', 'http://www0.maths.ox.ac.uk/courses/course/3333');
-		browser.teachingPage.assertNthSecondYearCourse(2, 'Test course 4', 'http://www0.maths.ox.ac.uk/courses/course/4444');
-		browser.teachingPage.assertNthSecondYearCourse(3, 'Test course 5', 'http://www0.maths.ox.ac.uk/courses/course/5555');
-		browser.teachingPage.assertNthSecondYearCourse(4, 'Test course 6', 'http://www0.maths.ox.ac.uk/courses/course/6666');
+		browser.teachingPage.assertNthSecondYearCourse(1, 'Test course 3', 'https://courses.maths.ox.ac.uk/node/115');
+		browser.teachingPage.assertNthSecondYearCourse(2, 'Test course 4', 'https://courses.maths.ox.ac.uk/node/116');
+		browser.teachingPage.assertNthSecondYearCourse(3, 'Test course 5', 'https://courses.maths.ox.ac.uk/node/117');
+		browser.teachingPage.assertNthSecondYearCourse(4, 'Test course 6', 'https://courses.maths.ox.ac.uk/node/118');
 		browser.teachingPage.assertNThirdYearCourses(2);
-		browser.teachingPage.assertNthThirdYearCourse(1, 'Test course 7', 'http://www0.maths.ox.ac.uk/courses/course/7777');
-		browser.teachingPage.assertNthThirdYearCourse(2, 'Test course 8', 'http://www0.maths.ox.ac.uk/courses/course/8888');
+		browser.teachingPage.assertNthThirdYearCourse(1, 'Test course 7', 'https://courses.maths.ox.ac.uk/node/119');
+		browser.teachingPage.assertNthThirdYearCourse(2, 'Test course 8', 'https://courses.maths.ox.ac.uk/node/120');
 		browser.teachingPage.assertNFourthYearCourses(1);
-		browser.teachingPage.assertNthFourthYearCourse(1, 'Test course 9', 'http://www0.maths.ox.ac.uk/courses/course/9999');
+		browser.teachingPage.assertNthFourthYearCourse(1, 'Test course 9', 'https://courses.maths.ox.ac.uk/node/121');
 	},
 
 };
