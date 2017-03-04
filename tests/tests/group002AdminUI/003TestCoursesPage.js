@@ -1,6 +1,7 @@
 var CourseModelTestConfig = require('../../modelTestConfig/courseModelTestConfig');
 
 module.exports = {
+	'@disabled': true, // Disabled testing select field starts working again...
 	'before': function (browser) {
 		browser.adminUIApp = browser.page.adminUIApp();
 		browser.adminUISignin = browser.page.adminUISignin();
