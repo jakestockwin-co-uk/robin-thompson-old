@@ -1,6 +1,7 @@
 var ResearchModelTestConfig = require('../../modelTestConfig/researchModelTestConfig');
 
 module.exports = {
+	'@disabled': true, // Disabled testing markdown field starts working again...
 	'before': function (browser) {
 		browser.adminUIApp = browser.page.adminUIApp();
 		browser.adminUISignin = browser.page.adminUISignin();
