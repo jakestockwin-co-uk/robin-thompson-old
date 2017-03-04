@@ -38,8 +38,8 @@ module.exports = {
 		// Fill test inputs
 		browser.adminUIInitialForm.fillFieldInputs({ fields: [
 			{ name: 'title', input: { value: 'Test course' } },
-			{ name: 'year', input: { value: 'Prelims' } },
 			{ name: 'link', input: { value: 'https://courses.maths.ox.ac.uk/node/113' } },
+			{ name: 'year', input: { value: 'Prelims' } },
 		] });
 
 		// Check test inputs in inital form
