@@ -25,24 +25,4 @@ module.exports = {
 		browser.publications.verifyPageLoad();
 		browser.publications.assertUI();
 	},
-	'User should also be able to navigate using the browser\'s back and forward buttons': function (browser) {
-		browser.back();
-		browser.teaching.verifyPageLoad();
-		browser.teaching.assertUI();
-		browser.back();
-		browser.research.verifyPageLoad();
-		browser.research.assertUI();
-		browser.back();
-		browser.index.verifyPageLoad();
-		browser.index.assertUI();
-		browser.forward();
-		browser.research.verifyPageLoad();
-		browser.research.assertUI();
-		browser.forward();
-		browser.teaching.verifyPageLoad();
-		browser.teaching.assertUI();
-		browser.forward();
-		browser.publications.verifyPageLoad();
-		browser.publications.assertUI();
-	},
 };

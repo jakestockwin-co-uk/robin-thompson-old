@@ -24,6 +24,7 @@ function changeDiv (event, link, title, heading, active) {
 				var content = document.getElementById('content');
 				var state = { content: content.innerHTML, title: title, heading: heading, active: active };
 				window.history.pushState(state, 'Title', link);
+                bindToContactForm()
 			});
 		}, duration);
 	}
