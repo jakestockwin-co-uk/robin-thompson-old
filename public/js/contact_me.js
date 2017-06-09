@@ -32,7 +32,7 @@ $(function () {
 				data: {
 					name: name,
 					email: email,
-					message: message
+					message: message,
 				},
 				cache: false,
 				success: function () {

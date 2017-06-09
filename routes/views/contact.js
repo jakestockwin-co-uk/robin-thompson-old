@@ -1,12 +1,12 @@
 var keystone = require('keystone');
 
 exports = module.exports = function (req, res) {
-    var view = new keystone.View(req, res);
-    var locals = res.locals;
+	var view = new keystone.View(req, res);
+	var locals = res.locals;
 
-    locals.section = 'contact';
-    locals.title = 'Contact';
+	locals.section = 'contact';
+	locals.title = 'Contact';
 
-    view.render('contact')
+	view.render('contact');
 
 };

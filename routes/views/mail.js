@@ -23,7 +23,7 @@ exports = module.exports = function (req, res) {
 
 	var mailOptions = {
 		from: '"jakestockwin.co.uk" <noreply@jakestockwin.co.uk>', // sender address
-		to: "robin.thompson@lmh.ox.ac.uk", // list of receivers
+		to: 'robin.thompson@lmh.ox.ac.uk', // list of receivers
 		subject: 'Website Contact Form', // Subject line
 		html: message, // plaintext body
 	};
