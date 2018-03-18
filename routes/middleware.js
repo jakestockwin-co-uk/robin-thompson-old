@@ -19,7 +19,7 @@ var _ = require('lodash');
 */
 exports.initLocals = function (req, res, next) {
 	res.locals.navLinks = [
-		{ label: 'Home', title: 'Robin Thompson', key: 'home', href: '/' },
+		{ label: 'Home', title: 'Home', key: 'home', href: '/' },
 		{ label: 'Research', title: 'Research Interests', key: 'research', href: '/research' },
 		{ label: 'Teaching', title: 'Teaching', key: 'teaching', href: '/teaching' },
 		{ label: 'Publications', title: 'Publications', key: 'publications', href: '/publications' },
