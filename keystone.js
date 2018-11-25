@@ -83,7 +83,7 @@ function configureKeystone () {
 
 // Configure the navigation bar in Keystone's Admin UI
 	keystone.set('nav', {
-		content: ['courses', 'publications', 'research-projects'],
+		content: ['courses', 'publications', 'research-projects', 'news'],
 		users: 'users',
 	});
 
