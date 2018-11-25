@@ -40,6 +40,7 @@ exports = module.exports = function (app) {
 	app.get('/research/:project', routes.views.project);
 	app.get('/teaching', routes.views.teaching);
 	app.get('/publications', routes.views.publications);
+	app.get('/news', routes.views.news);
 	app.get('/contact', routes.views.contact);
 	app.post('/mail', routes.views.mail);
 
